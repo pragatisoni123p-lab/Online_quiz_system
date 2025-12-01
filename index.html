@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz System</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // REPLACE WITH YOUR ACTUAL PUBLIC KEY
+            emailjs.init("F05MtYvct45p4DzD8");
+        })();
+    </script>
+</head>
+<body>
+    <div class="container" id="login-page">
+        <div class="login-header">
+            <div class="avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <h2>Quiz Login</h2>
+            <p>Enter your details to start the journey</p>
+        </div>
+        
+        <form id="login-form">
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Full Name" required autocomplete="off">
+                <i class="fas fa-user"></i>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="useremail" placeholder="Email Address" required autocomplete="off">
+                <i class="fas fa-envelope"></i>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="userpass" placeholder="Password" required>
+                <i class="fas fa-lock"></i>
+            </div>
+
+            <button type="submit" class="login-btn">
+                Start Quiz <i class="fas fa-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+
+
+    <div class="container hidden" id="rules-page">
+        <h2>Quiz Rules</h2>
+        <div class="rules-list">
+            <ol>
+                <li>You will have 15 seconds per question.</li>
+                <li>Once you select an answer, it can't be undone.</li>
+                <li>You can skip questions and come back later via "Previous".</li>
+                <li>You cannot exit the quiz while playing.</li>
+                <li>Your score will be emailed to you at the end.</li>
+            </ol>
+        </div>
+        <button id="btn-rules-next">Next</button>
+    </div>
+
+    <div class="container hidden" id="welcome-page">
+        <h2>Welcome, <span id="display-name">User</span>!</h2>
+        <blockquote class="quote">
+            "Success is the sum of small efforts, repeated day in and day out."
+        </blockquote>
+        <p>Best of luck! Your quiz is about to begin.</p>
+        <button id="btn-start-quiz">Start Quiz</button>
+    </div>
+
+    <div class="quiz-container hidden" id="quiz-page">
+        <header>
+            <div class="timer">Time Left: <span id="time-sec">15</span>s</div>
+            <div class="status-box">
+                <p>Attempted: <span id="attempted-count">0</span></p>
+                <p>Skipped: <span id="skipped-count">0</span></p>
+            </div>
+        </header>
+        
+        <section>
+            <h3 id="question-text">Question goes here?</h3>
+            <div class="option-list">
+                </div>
+        </section>
+
+        <footer>
+            <button id="btn-prev">Previous</button>
+            <button id="btn-skip">Skip</button>
+            <button id="btn-next">Next</button> </footer>
+    </div>
+
+    <div class="container hidden" id="result-page">
+        <div class="icon">👑</div>
+        <h2 id="congrats-msg">Result</h2>
+        <p>You scored <span id="score-text">0</span> out of <span id="total-text">20</span></p>
+        <p id="email-status">Sending email report...</p>
+        <button onclick="location.reload()">Replay Quiz</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

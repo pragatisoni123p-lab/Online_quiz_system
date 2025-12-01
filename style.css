@@ -1,0 +1,534 @@
+/* --- Global Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- Main Card Container --- */
+.container, .quiz-container {
+    background: #fff;
+    width: 650px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Specific Border for Login, Rules, and Welcome Pages */
+.container {
+    /* A bright Cyan/Teal border to stand out against the purple background */
+    border: 5px solid #854895; 
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Headings & Text --- */
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #555;
+    font-size: 15px;
+}
+
+/* --- Form Styles --- */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+    outline: none;
+}
+
+input:focus {
+    border-color: #667eea;
+}
+
+/* --- Buttons --- */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* --- Rules List --- */
+.rules-list {
+    text-align: left;
+    margin: 20px 0;
+    background: #f1f1f1;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #667eea;
+}
+
+.rules-list ol {
+    margin-left: 20px;
+}
+
+.rules-list li {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* --- Quote Box --- */
+.quote {
+    font-size: 16px;
+    font-style: italic;
+    color: #555;
+    margin: 25px 0;
+    position: relative;
+    padding: 10px 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+.quote::before {
+    content: '\f10d'; /* FontAwesome Quote Icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 20px;
+    color: #667eea;
+    background: white;
+    padding: 0 5px;
+}
+
+/* --- Quiz Page Specifics --- */
+.quiz-container {
+    width: 550px; /* Standard width */
+    
+    /* NEW: Add the border */
+    border: 3px solid #667eea; /* Matches your theme color */
+    
+    /* Optional: Ensure the background stays white inside the border */
+    background: #fff;
+    position: relative;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.timer {
+    background: #e0e7ff;
+    color: #667eea;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.timer::before {
+    content: '\f017'; /* Clock Icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.status-box p {
+    font-size: 12px;
+    color: #777;
+    font-weight: 500;
+}
+
+#question-text {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* --- Options Styling --- */
+/* .option-list .option {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.option-list .option:hover {
+    background: #eef1f6;
+    border-color: #cbd5e0;
+}
+
+.option-list .option.selected {
+    background: #e3f9e5;
+    border-color: #28a745;
+    color: #155724;
+} */
+
+/* Add checkmark icon when selected */
+.option-list .option.selected::after {
+    content: '\f00c';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #28a745;
+}
+
+/* --- Footer Buttons --- */
+footer {
+    display: flex;
+    gap: 15px; /* Increased gap slightly for better spacing */
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0; /* Adds a subtle separation line */
+}
+
+footer button {
+    margin-top: 0;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 30px; /* Pill shape for modern look */
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 1. Previous Button (Enhanced) */
+#btn-prev {
+    background: transparent;
+    color: #636e72; /* Slate gray - professional and neutral */
+    border: 2px solid #dfe6e9;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+}
+
+/* The Hover Effect: Slide Left */
+#btn-prev:hover {
+    background: #fdfdfd;
+    color: #2d3436; /* Darker text on hover */
+    border-color: #b2bec3; /* Darker border */
+    transform: translateX(-5px); /* Moves the whole button left */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Add the Left Arrow Icon */
+#btn-prev::before {
+    content: '\f060'; /* FontAwesome Left Arrow */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    transition: transform 0.3s ease;
+}
+
+/* Animate the arrow specifically for a cool effect */
+#btn-prev:hover::before {
+    transform: translateX(-3px); /* The arrow moves even further left than the button */
+}
+
+/* 2. Skip Button (Modern Amber Outline) */
+#btn-skip {
+    background: transparent;
+    color: #f39c12; /* Elegant amber/orange */
+    border: 2px solid #f39c12;
+    flex: 1;
+}
+
+#btn-skip:hover {
+    background: #fffbe6; /* Very subtle light yellow tint on hover */
+    color: #d35400; /* Darker orange on hover */
+    border-color: #d35400;
+    transform: translateY(-2px);
+}
+
+/* Add an icon before text for Skip */
+#btn-skip::before {
+    content: '\f04e'; /* FontAwesome fast-forward icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+/* 3. Next/Finish Button (Premium Theme Gradient) */
+#btn-next {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    flex: 2; /* Makes this button wider than the others to show importance */
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); /* Soft purple shadow */
+}
+
+#btn-next:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* Add arrow icon after text for Next */
+#btn-next::after {
+    content: '\f061'; /* FontAwesome right arrow icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+/* --- Result Page --- */
+#result-page .icon {
+    font-size: 80px;
+    color: #ffd700;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-20px);}
+    60% {transform: translateY(-10px);}
+}
+
+#score-text {
+    font-size: 40px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+/* ===========================
+   LOGIN BOX SPECIFIC STYLES
+   =========================== */
+
+/* 1. Avatar Icon at the top */
+.login-header .avatar {
+    font-size: 60px;
+    margin-bottom: 10px;
+    color: #667eea; /* Matches the theme */
+    background: #e0e7ff;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 15px auto; /* Centers the circle */
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+/* 2. Gradient Heading */
+.login-header h2 {
+    background: -webkit-linear-gradient(#667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #888;
+}
+
+/* 3. Input Groups (Wrapper for Input + Icon) */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Style the Input Field */
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 45px; /* Left padding creates space for the icon */
+    border: 2px solid #e1e1e1;
+    border-radius: 30px; /* Fully rounded pill shape */
+    outline: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+
+/* Style the Icon inside the input */
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 16px;
+    transition: 0.3s;
+    pointer-events: none; /* Allows clicking through the icon to the input */
+}
+
+/* 4. Focus Effects (Magic happens here) */
+.input-group input:focus {
+    border-color: #667eea;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+}
+
+/* When input is focused, change the sibling icon color */
+.input-group input:focus + i {
+    color: #667eea;
+}
+
+/* 5. Login Button Styling */
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px; /* Matches input shape */
+    font-size: 16px;
+    font-weight: 600;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    box-shadow: 0 5px 20px rgba(118, 75, 162, 0.3);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between text and arrow */
+}
+
+.login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(118, 75, 162, 0.5);
+}
+
+.login-btn i {
+    transition: transform 0.3s;
+}
+
+.login-btn:hover i {
+    transform: translateX(5px); /* Move arrow slightly right on hover */
+}
+
+
+
+
+/* --- Question Text Card --- */
+#question-text {
+    font-size: 19px;
+    font-weight: 600;
+    color: #2d3436;
+    background: #fff; /* Changed to white to contrast with the border */
+    padding: 20px 25px;
+    border-radius: 12px;
+    
+    /* THE NEW BORDERS */
+    border: 2px solid #dcdfe5; /* Light gray border on Top, Right, Bottom */
+    border-left: 6px solid #667eea; /* Thicker Purple accent on the Left */
+    
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03); /* Slightly softer shadow */
+    line-height: 1.5;
+}
+
+/* --- Options Container --- */
+.option-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Better spacing between options */
+}
+
+/* --- Individual Option Styling --- */
+.option-list .option {
+    background: #fff;
+    border: 2px solid #eff0f4; /* Subtle border */
+    border-radius: 15px; /* Soft roundness */
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth spring animation */
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #555;
+    position: relative;
+}
+
+/* Hover Effect: Lift and Glow */
+.option-list .option:hover {
+    border-color: #a3b1e8; /* Light purple border */
+    background: #fbfbff;
+    transform: translateY(-3px); /* Lifts up */
+    box-shadow: 0 8px 15px rgba(102, 126, 234, 0.1); /* Soft shadow */
+}
+
+/* --- The "Fake" Radio Button Circle --- */
+/* This creates a circle on the left of every option */
+.option-list .option::before {
+    content: '';
+    height: 22px;
+    width: 22px;
+    border: 2px solid #d1d1d1;
+    border-radius: 50%;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Prevents circle from squishing on mobile */
+}
+
+/* --- Selected State (When clicked) --- */
+.option-list .option.selected {
+    border-color: #667eea; /* Theme color border */
+    background: #eef2ff; /* Very light purple background */
+    color: #667eea; /* Text turns purple */
+    font-weight: 600;
+}
+
+/* Animate the Circle when Selected */
+.option-list .option.selected::before {
+    border-color: #667eea;
+    background: #667eea;
+    box-shadow: inset 0 0 0 4px #eef2ff; /* Creates a "Donut" effect */
+}
+
+/* Remove the old checkmark if it exists from previous code */
+.option-list .option.selected::after {
+    content: none;
+}
